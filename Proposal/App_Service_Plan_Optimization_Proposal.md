@@ -212,6 +212,67 @@ No resizing required; logical grouping of integration and communication services
 
 ---
 
+## 3.3 Proposed Changes
+
+### 1️⃣ Create New App Service Plan – fincart-prod-linux-app-plan-001
+
+A new App Service Plan will be created using **Azure App Service Premium v3 – P2mv3 (Memory-Optimized M-Series)**.  
+Although it falls under the same Premium v3 cost category, it provides **double memory (32 GB)** due to the **M-Series SKU**.
+
+**Services to be moved:**
+- fincart-ai  
+- fincart-python  
+- fincart-api-registry  
+- fincart-portfolio  
+- fincart-report  
+- fincart-transaction  
+- fincart-assets  
+- fincart-fp  
+
+**Capacity & Monitoring Impact:**
+- Current projected average memory utilization: **~36%**
+- Even after enabling **New Relic APM**, memory utilization is expected to **remain below 50%**
+- This leaves sufficient headroom for **peak load and future service deployments**
+
+---
+
+### 2️⃣ Optimize Existing Plan – ASP-FincartResourcesIndia-bff4
+
+After moving **assets, fp, and mis** services out, this plan will mainly run:
+
+- fincart-lms  
+- fincart-thirdparty  
+
+**Capacity & Monitoring Impact:**
+- Even after enabling **New Relic on LMS**, memory consumption is expected to **remain below 50%**
+- Ensures cost optimization without impacting application performance or availability
+
+---
+
+### 3️⃣ Optimize Plan – fincart-prod-linux-app-plan-003
+
+- Current average memory utilization on this plan is approximately **~51%**
+- The **fincart-mis** service will be moved from **bff4** to this plan
+- **New Relic is already enabled on fincart-core**
+
+**Capacity & Monitoring Impact:**
+- After enabling **New Relic on MIS**, total memory utilization is expected to **remain below 60%**
+- No App Service Plan resizing is required
+
+---
+
+### 4️⃣ Decommission App Service Plan – fincart-prod-linux-app-plan-002
+
+- The **fincart-prod-linux-app-plan-002** will be decommissioned after service migration
+- This plan is no longer required and is **not aligned with the memory-optimized (M-Series) plan strategy**
+
+**Outcome:**
+- Reduced infrastructure footprint  
+- Simplified App Service Plan architecture  
+- Direct contribution to cost savings  
+
+---
+
 ## 4. Cost Comparison & Savings
 
 | Description | Amount (INR) |
