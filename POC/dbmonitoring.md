@@ -40,8 +40,6 @@ The objective of this POC is to validate the **feasibility** of monitoring datab
 
 ## 4. Evidence Collected (POC Findings)
 
-> **Note:** Actual screenshots are captured separately and should be attached with this document. Below, each finding clearly mentions **where each screenshot fits**, so reviewers can easily map evidence.
-
 ---
 
 ### 4.1 Centralized Logging – Current State
