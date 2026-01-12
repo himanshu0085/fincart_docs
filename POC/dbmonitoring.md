@@ -40,6 +40,10 @@ The objective of this POC is to validate the **feasibility** of monitoring datab
 
 ## 4. Evidence Collected (POC Findings)
 
+> **Note:** Actual screenshots are captured separately and should be attached with this document. Below, each finding clearly mentions **where each screenshot fits**, so reviewers can easily map evidence.
+
+---
+
 ### 4.1 Centralized Logging – Current State
 
 **Query Used:**
@@ -55,13 +59,97 @@ search *
 * Logs are successfully ingested into Log Analytics
 * `AppServiceConsoleLogs` dominate log volume
 
-**Screenshot Reference:**
+**📸 Screenshot to attach:**
 
-* Screenshot showing `AppServiceConsoleLogs ~19,00,320 records`
+* *Screenshot‑1:* Log Analytics → `search * | summarize count() by Type` showing AppServiceConsoleLogs highest
 
 **Finding:**
 
 > Centralized logging is operational; AppServiceConsoleLogs are the highest-volume log source.
+
+---
+
+### 4.2 Console Log Nature (Noise Analysis)
+
+**Query Used:**
+
+```kql
+AppServiceConsoleLogs
+| take 20
+```
+
+**Observation:**
+
+* Logs are Informational / Debug-level
+* Unstructured stdout/stderr messages
+
+**📸 Screenshot to attach:**
+
+* *Screenshot‑2:* Sample AppServiceConsoleLogs output (DEBUG / INFO text logs)
+
+**Finding:**
+
+> AppServiceConsoleLogs are high-volume, low-audit-value logs generated via stdout/stderr.
+
+---
+
+### 4.3 Database Audit Logs – Current Gap
+
+**Query Used:**
+
+```kql
+search "sql"
+```
+
+**Observation:**
+
+* No Azure SQL / MySQL audit logs present
+
+**📸 Screenshot to attach:**
+
+* *Screenshot‑3:* Search results showing absence of DB audit logs
+
+**Finding:**
+
+> Database audit logs are not currently ingested into Log Analytics.
+
+---
+
+### 4.4 VPN (NetBird) Logs – Current Gap
+
+**Query Used:**
+
+```kql
+search "netbird"
+```
+
+**Observation:**
+
+* No VPN user identity logs available
+
+**📸 Screenshot to attach:**
+
+* *Screenshot‑4:* Search results showing no NetBird logs
+
+**Finding:**
+
+> NetBird VPN logs are not currently integrated with Log Analytics.
+
+---
+
+### 4.5 Cost & Volume Indicator
+
+**Observation:**
+
+* High ingestion driven by console logs
+
+**📸 Screenshot to attach:**
+
+* *Screenshot‑5:* Azure Cost Management / Ingestion volume view
+
+**Finding:**
+
+> Excessive console logging has a direct cost and ingestion impact.
 
 ---
 
