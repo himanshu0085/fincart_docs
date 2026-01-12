@@ -142,26 +142,11 @@ search "netbird"
 
 * High ingestion driven by console logs
 
-<img width="1830" height="1006" alt="image" src="https://github.com/user-attachments/assets/3c85e240-3ba6-4510-adfe-7c20c6ad3506" />
-
-* *Screenshot‑5:* Azure Cost Management / Ingestion volume view
-
-**Finding:**
-
-> Excessive console logging has a direct cost and ingestion impact.
-
----
-
-### 4.5 Cost & Volume Indicator
-
-**Observation:**
-
-* Storage and bandwidth costs visible in Azure Cost Management
-* High log volume correlates with AppServiceConsoleLogs ingestion
+<img width="638" height="761" alt="image" src="https://github.com/user-attachments/assets/0956b2f0-6ca0-4cae-a7a0-7d66f90bbea1" />
 
 
+<img width="618" height="391" alt="image" src="https://github.com/user-attachments/assets/d98e12ef-5a8f-4174-8e19-41f1e00089a1" />
 
-* Cost Management screenshot highlighting storage/bandwidth usage
 
 **Finding:**
 
