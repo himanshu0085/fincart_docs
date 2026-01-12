@@ -57,9 +57,8 @@ search *
 * Logs are successfully ingested into Log Analytics
 * `AppServiceConsoleLogs` dominate log volume
 
-**📸 Screenshot to attach:**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d90bb8d2-3225-4340-a14c-e581d75f93bd" />
 
-* *Screenshot‑1:* Log Analytics → `search * | summarize count() by Type` showing AppServiceConsoleLogs highest
 
 **Finding:**
 
@@ -81,9 +80,8 @@ AppServiceConsoleLogs
 * Logs are Informational / Debug-level
 * Unstructured stdout/stderr messages
 
-**📸 Screenshot to attach:**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/06538a7e-f577-4e0f-b567-413e932ca8d3" />
 
-* *Screenshot‑2:* Sample AppServiceConsoleLogs output (DEBUG / INFO text logs)
 
 **Finding:**
 
@@ -103,9 +101,11 @@ search "sql"
 
 * No Azure SQL / MySQL audit logs present
 
-**📸 Screenshot to attach:**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2dea8870-b3b7-429d-9709-4d4703154186" />
 
-* *Screenshot‑3:* Search results showing absence of DB audit logs
+<img width="1830" height="1006" alt="image" src="https://github.com/user-attachments/assets/f15eab61-358a-49c7-8142-20a17eb83034" />
+
+
 
 **Finding:**
 
@@ -125,9 +125,7 @@ search "netbird"
 
 * No VPN user identity logs available
 
-**📸 Screenshot to attach:**
-
-* *Screenshot‑4:* Search results showing no NetBird logs
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5113274e-6cf4-4ab2-b284-622f5fe74bbd" />
 
 **Finding:**
 
