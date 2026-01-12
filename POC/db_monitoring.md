@@ -64,8 +64,9 @@ PostgreSQL diagnostic settings are configured to archive the following logs to A
 * PostgreSQL Session Logs
 * PostgreSQL Query Runtime Logs
 
-**Screenshot to add:**
-📸 *PostgreSQL Diagnostic Settings showing logs archived to `fincartpsqldblogs`*
+<img width="1825" height="926" alt="image" src="https://github.com/user-attachments/assets/92d4088a-da1f-408e-aae7-441d23fd0b0f" />
+
+*PostgreSQL Diagnostic Settings showing logs archived to `fincartpsqldblogs`*
 
 **Finding:**
 Database audit logging is enabled without dependency on Log Analytics.
@@ -87,8 +88,9 @@ resourceId/
                  └── PT1H.json
 ```
 
-**Screenshot to add:**
-📸 *Storage account blob containers showing PostgreSQL log containers*
+<img width="719" height="365" alt="image" src="https://github.com/user-attachments/assets/f50bca7b-44a2-4962-81bb-a36ea262c0e4" />
+
+*Storage account blob containers showing PostgreSQL log containers*
 
 **Finding:**
 Logs are continuously written to Azure Storage.
@@ -105,11 +107,10 @@ These logs contain:
 * Database user
 * Executed SQL statement / activity
 
-**Screenshot to add:**
-📸 *PT1H.json opened (append blob details)*
+<img width="1121" height="885" alt="Screenshot from 2026-01-12 16-30-38" src="https://github.com/user-attachments/assets/069745ac-08e2-436f-baf0-4574901a0f54" />
 
-**Screenshot to add:**
-📸 *Preview of PT1H.json content (IP, time, query masked)*
+*PT1H.json opened (append blob details)*
+*Preview of PT1H.json content (IP, time, query masked)*
 
 **Finding:**
 Database logs provide sufficient technical details to identify **what happened, when it happened, and from which IP**.
