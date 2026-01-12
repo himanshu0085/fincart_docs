@@ -152,75 +152,6 @@ search "netbird"
 
 ---
 
-### 4.2 Console Log Nature (Noise Analysis)
-
-**Query Used:**
-
-```kql
-AppServiceConsoleLogs
-| take 20
-```
-
-**Observation:**
-
-* Logs are **Informational / Debug-level**
-* Unstructured stdout/stderr messages
-* Framework and application debug output
-
-**Screenshot Reference:**
-
-* Screenshot showing DEBUG / informational console logs
-
-**Finding:**
-
-> AppServiceConsoleLogs are high-volume, low-audit-value logs generated via stdout/stderr.
-
----
-
-### 4.3 Database Audit Logs – Current Gap
-
-**Query Used:**
-
-```kql
-search "sql"
-```
-
-**Observation:**
-
-* No Azure SQL / MySQL audit logs present in workspace
-
-**Screenshot Reference:**
-
-* Screenshot showing only AppServiceConsoleLogs in results
-
-**Finding:**
-
-> Database audit logs are not currently ingested into Log Analytics.
-
----
-
-### 4.4 VPN (NetBird) Logs – Current Gap
-
-**Query Used:**
-
-```kql
-search "netbird"
-```
-
-**Observation:**
-
-* No VPN user identity logs available in workspace
-
-**Screenshot Reference:**
-
-* Screenshot showing “No results found” for NetBird
-
-**Finding:**
-
-> NetBird VPN logs are not currently integrated with Log Analytics.
-
----
-
 ### 4.5 Cost & Volume Indicator
 
 **Observation:**
@@ -228,7 +159,8 @@ search "netbird"
 * Storage and bandwidth costs visible in Azure Cost Management
 * High log volume correlates with AppServiceConsoleLogs ingestion
 
-**Screenshot Reference:**
+<img width="1830" height="1006" alt="image" src="https://github.com/user-attachments/assets/3c85e240-3ba6-4510-adfe-7c20c6ad3506" />
+
 
 * Cost Management screenshot highlighting storage/bandwidth usage
 
