@@ -127,6 +127,9 @@ search "netbird"
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5113274e-6cf4-4ab2-b284-622f5fe74bbd" />
 
+<img width="1830" height="1006" alt="image" src="https://github.com/user-attachments/assets/475f04d3-8956-4ebe-a6a0-8073ac31f0fb" />
+
+
 **Finding:**
 
 > NetBird VPN logs are not currently integrated with Log Analytics.
