@@ -46,11 +46,19 @@ Prove that **PostgreSQL database activity logs** can be correlated with **NetBir
 
 ---
 
+<img width="1824" height="1004" alt="image" src="https://github.com/user-attachments/assets/4bb34170-0aca-4ad9-b6a0-1bb9bad86c7e" />
+
+<img width="1824" height="1004" alt="image" src="https://github.com/user-attachments/assets/a4767f15-109d-4e0b-b163-c3009bdde20c" />
+
+
 ## 🧩 STEP 2️⃣ – Database Logs Evidence (DB Side)
 
 **Source**
 - Azure Storage Account → `fincartpsqldblogs`
 - File: `PT1H.json`
+
+<img width="719" height="396" alt="image" src="https://github.com/user-attachments/assets/30d64349-549c-49e7-b8cb-66350433f77c" />
+
 
 **Highlighted Log Entry**
 ```json
@@ -66,6 +74,9 @@ Prove that **PostgreSQL database activity logs** can be correlated with **NetBir
 - No data access or modification
 
 ---
+
+<img width="1824" height="1004" alt="image" src="https://github.com/user-attachments/assets/4ca20210-45f8-4c4d-b615-9d1b6858b0bc" />
+
 
 ## 🧩 STEP 3️⃣ – Time Correlation
 
