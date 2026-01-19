@@ -51,7 +51,15 @@ FINPROD is heavily utilized and appropriately sized for production workloads.
 | vCores | 2 |
 | Region | Central India |
 | CPU Utilization | ~1% |
+| Estimated Compute Cost | **₹24,405 / month** |
+| Estimated Storage Cost | **~₹4,000 / month** |
+| Estimated Backup Cost | **~₹10–20 / month** |
+| **Total Estimated Cost** | **~₹28,400 / month** |
 | Workload Type | UAT / Testing |
+
+**Observation:**  
+Despite very low CPU utilization (~1%), UAT incurs a fixed monthly cost because Hyperscale provisioned compute is billed 24×7.
+
 
 ---
 
