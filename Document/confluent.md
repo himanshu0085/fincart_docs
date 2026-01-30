@@ -120,13 +120,13 @@ Official references:
 
 ### 3.3 Summary of Payment Options
 
-| Aspect          | Pay-As-You-Go         | Annual / Commit                      |
-| --------------- | --------------------- | ------------------------------------ |
-| Upfront payment | No                    | Yes                                  |
-| Billing         | Monthly Azure invoice | Azure invoice with commit adjustment |
-| Discount        | No                    | Yes                                  |
-| Flexibility     | High                  | Medium                               |
-| Typical usage   | Dev / POC             | Production / Enterprise              |
+| Aspect          | Pay-As-You-Go         | Monthly Commit                               | Annual Commit                               |
+| --------------- | --------------------- | -------------------------------------------- | ------------------------------------------- |
+| Upfront payment | No                    | Yes (monthly commitment)                     | Yes (annual commitment)                     |
+| Billing         | Monthly Azure invoice | Azure invoice with monthly commit adjustment | Azure invoice with annual commit adjustment |
+| Discount        | No                    | Yes (lower than annual)                      | Yes (highest)                               |
+| Flexibility     | High                  | Medium                                       | Lower                                       |
+| Typical usage   | Dev / POC             | Steady production workloads                  | Large-scale / Enterprise production         |
 
 ---
 
