@@ -74,9 +74,15 @@ https://docs.confluent.io/cloud/current/billing/overview.html
 ## 3.1 40% Capacity Cap
 
 Basic and Standard clusters include partitions subject to a 40% cluster
-utilization cap.\
-This includes ingress, egress, connections, request rate, and
-replication load.
+utilization cap.
+
+This includes:
+
+-   Ingress throughput
+-   Egress throughput
+-   Connections
+-   Request rate
+-   Replication load
 
 Reference:\
 https://docs.confluent.io/cloud/current/quotas/overview.html
