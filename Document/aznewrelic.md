@@ -238,9 +238,9 @@ Forwarding only required categories helps control ingestion costs.
 | Component                 | Azure Cost                           | New Relic Cost                                 |
 | ------------------------- | ------------------------------------ | ---------------------------------------------- |
 | Azure Event Hub Streaming | Yes                                  | Yes                                            |
-| Log Analytics Storage     | Yes                                  | Possible                                       |
 | Azure Function Processing | Yes (execution-based, often minimal) | Yes                                            |
 | Metrics Only Integration  | Minimal                              | Minimal (metrics only, full logs not included) |
+
 
 ---
 
