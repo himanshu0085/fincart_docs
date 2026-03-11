@@ -6,9 +6,9 @@
 
 # 1. Purpose
 
-This document explains the **possible methods to send Azure SQL logs to New Relic** and identifies **all potential cost points on the Azure side and the New Relic side**.
+This document explains the **possible methods to send Azure SQL logs to New Relic** and highlights **potential cost considerations from both Azure and New Relic**.
 
-The objective is to help evaluate the architecture choices before enabling centralized logging in New Relic.
+The objective is to evaluate the available architecture options before enabling centralized log visibility in New Relic.
 
 ---
 
@@ -28,19 +28,19 @@ Azure SQL Database
 
 ### Current State
 
-* **Metrics** are visible in New Relic
-* **Logs** are stored in Azure Log Analytics
-* New Relic is currently used mainly for **monitoring and alerting**
+* Azure SQL **metrics are visible in New Relic**
+* Azure SQL **logs are stored and investigated in Azure Log Analytics**
+* New Relic is currently used mainly for **monitoring dashboards and alerts**
 
-This architecture does **not send full database logs to New Relic**.
+This architecture **does not send full database logs to New Relic**.
 
 ---
 
 # 3. Requirement
 
-If logs must also be visible in **New Relic**, they must be forwarded from Azure to New Relic through an integration pipeline.
+If there is a requirement to **view Azure SQL logs directly in New Relic**, logs must be forwarded from Azure to New Relic using an integration pipeline.
 
-Multiple architectures can achieve this, each with **different Azure infrastructure costs and New Relic ingestion implications**.
+Multiple architecture options exist, each with **different Azure infrastructure considerations and potential New Relic ingestion charges**.
 
 ---
 
@@ -74,8 +74,8 @@ Azure may charge for:
 ### Advantages
 
 * Real-time log streaming
-* Highly scalable
-* Standard enterprise architecture
+* Highly scalable architecture
+* Common enterprise integration pattern
 
 ### Disadvantages
 
@@ -94,29 +94,19 @@ Azure SQL Database
 → Integration / API Export
 → New Relic Logs
 
-### Azure Cost Components
-
-Azure charges may apply for:
-
-* Log Analytics data ingestion
-* Log storage
-* Query execution
-
-Log Analytics pricing is generally based on **GB of data ingested**.
-
 ### New Relic Cost Components
 
-* Logs forwarded to New Relic count toward **New Relic ingest limits**
+* Logs forwarded to New Relic count toward **New Relic data ingestion limits**
 
 ### Advantages
 
-* Logs already available in Log Analytics
-* No additional streaming infrastructure
+* Logs are already available in **Log Analytics**
+* No additional streaming infrastructure required
 
 ### Disadvantages
 
-* Duplicate log ingestion
-* Increased operational complexity
+* Duplicate log ingestion may occur
+* Additional integration configuration required
 
 ---
 
@@ -135,35 +125,25 @@ Azure SQL Database
 
 Azure may charge for:
 
-1. **Log Analytics ingestion**
+* Azure Function executions
+* Execution duration and memory usage
 
-   * Logs stored in Log Analytics are charged based on **data volume ingested**
-
-2. **Azure Function execution**
-
-   * Billed based on:
-
-     * Number of executions
-     * Execution duration
-     * Memory consumption
-
-Azure provides a **free monthly allowance** for Function executions, so in many cases the cost remains minimal.
+Azure Functions provide a **free monthly execution allowance**, so for low-volume workloads the cost may remain minimal.
 
 ### New Relic Cost Components
 
-* Logs sent through API count toward **New Relic data ingestion**
+* Logs sent through the API count toward **New Relic data ingestion**
 
 ### Advantages
 
-* Ability to **filter logs before sending**
-* Reduced data volume sent to New Relic
-* Lower overall ingestion cost
+* Logs can be **filtered before sending to New Relic**
+* Reduced log volume sent to New Relic
 * No Event Hub infrastructure required
 
 ### Disadvantages
 
 * Requires custom configuration
-* Additional maintenance for the function
+* Additional operational maintenance
 
 ---
 
@@ -182,18 +162,18 @@ Minimal Azure cost for metrics collection.
 
 ### New Relic Cost Components
 
-Minimal ingestion impact as **only metrics and limited telemetry are sent**, **not full database logs**.
+Minimal ingestion impact as **only metrics and limited telemetry are sent**, not full database logs.
 
 ### Advantages
 
 * Simplest architecture
 * Minimal operational overhead
-* Suitable for monitoring dashboards and alerts
+* Suitable for performance monitoring and alerting
 
 ### Disadvantages
 
 * Full database logs are **not available in New Relic**
-* Root cause analysis must be performed in Azure
+* Root cause investigation must be performed in Azure
 
 ---
 
@@ -209,7 +189,7 @@ Log generation depends on factors such as:
 * Error and exception events
 * Monitoring configuration
 
-Therefore, log ingestion costs depend on **actual log volume generated**, not on the size of the database.
+Therefore, log ingestion costs depend on **actual log volume generated**, not database storage size.
 
 ---
 
@@ -229,7 +209,7 @@ Certain diagnostic categories generate significantly more logs than others.
 * Deadlocks
 * Timeouts
 
-Forwarding only required categories helps control ingestion costs.
+Forwarding only required categories helps control ingestion volume and associated costs.
 
 ---
 
@@ -240,7 +220,6 @@ Forwarding only required categories helps control ingestion costs.
 | Azure Event Hub Streaming | Yes                                  | Yes                                            |
 | Azure Function Processing | Yes (execution-based, often minimal) | Yes                                            |
 | Metrics Only Integration  | Minimal                              | Minimal (metrics only, full logs not included) |
-
 
 ---
 
@@ -256,17 +235,18 @@ New Relic
 Azure Log Analytics
 → Database logs
 → Error investigation
-→ Root cause analysis
+→ Deadlock analysis
+→ Root cause diagnostics
 
-This architecture:
+### Benefits of this approach
 
 * Avoids duplicate log ingestion
-* Reduces operational cost
-* Maintains clear separation between monitoring and debugging
+* Reduces infrastructure cost
+* Simplifies operational management
 
 ---
 
-# 9. When Logs Must Be Available in New Relic
+# 9. If Logs Must Be Available in New Relic
 
 Recommended architecture:
 
@@ -275,27 +255,27 @@ Azure SQL Database
 → Azure Function (filter logs)
 → New Relic Logs API
 
-Only forward essential log categories such as:
+Only forward essential categories such as:
 
 * Errors
 * Deadlocks
 * Timeouts
 
-This approach helps **control Azure and New Relic ingestion costs** while still providing centralized log visibility.
+This helps **control Azure and New Relic ingestion costs** while still providing centralized log visibility.
 
 ---
 
 # 10. Conclusion
 
-Azure SQL logs can be forwarded to New Relic using several architectures, including Event Hub streaming, Log Analytics integration, or filtered forwarding using Azure Functions.
+Azure SQL logs can be forwarded to New Relic through several architecture options including Event Hub streaming, Log Analytics integration, or filtered forwarding using Azure Functions.
 
-Each method introduces **different Azure infrastructure costs and potential New Relic ingestion charges**.
+Each option introduces **different Azure infrastructure considerations and potential New Relic ingestion charges**.
 
-A cost-aware implementation should:
+Before enabling log forwarding, organizations should evaluate:
 
-* Evaluate expected log volume
-* Select the appropriate architecture
-* Forward only required diagnostic categories
-* Monitor ingestion volume regularly
+* Expected log generation volume
+* Azure infrastructure considerations
+* New Relic ingestion limits
+* Operational monitoring requirements
 
-Proper architecture selection helps maintain **observability capabilities while managing operational costs effectively**.
+Selecting the appropriate architecture helps maintain **observability capabilities while managing operational costs effectively**.
