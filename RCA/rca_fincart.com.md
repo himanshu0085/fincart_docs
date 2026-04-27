@@ -114,8 +114,8 @@ Automated scanning & probing traffic
 
 ### Customer Impact
 
-- Website degraded / intermittently unavailable for ~25 minutes
-- Users experienced slow responses and request timeouts
+- Website degraded / intermittently unavailable for ~25 minutes  
+- Users experienced slow responses and request timeouts  
 
 ---
 
@@ -123,10 +123,10 @@ Automated scanning & probing traffic
 
 | Step | Action |
 |------|--------|
-| 1 | Identified CPU spike via Azure Metrics |
-| 2 | Analyzed traffic patterns using Azure Observability |
-| 3 | Restarted Web App via Azure Portal |
-| 4 | Application recovered and CPU normalized |
+| 1 | Identified high CPU utilization via Azure Metrics |
+| 2 | Scaled up App Service Plan **fincart-wordpress-app-plan-001** to increase compute capacity |
+| 3 | Restarted the Web App to clear active processes |
+| 4 | CPU utilization normalized and application performance restored |
 
 ---
 
