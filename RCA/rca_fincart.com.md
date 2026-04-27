@@ -23,7 +23,7 @@ During this period, the website became slow and intermittently unavailable to en
 | Start Time | April 27, 2026, 09:47 AM IST |
 | End Time | April 27, 2026, ~10:12 AM IST |
 | Duration | ~25 minutes |
-| Resolution | Manual Web App Restart |
+| Resolution | App Service Plan scale-up + Web App restart |
 | Status | Resolved |
 
 ---
@@ -114,8 +114,8 @@ Automated scanning & probing traffic
 
 ### Customer Impact
 
-- Website degraded / intermittently unavailable for ~25 minutes  
-- Users experienced slow responses and request timeouts  
+- Website degraded / intermittently unavailable for ~25 minutes
+- Users experienced slow responses and request timeouts
 
 ---
 
@@ -146,6 +146,7 @@ Automated scanning & probing traffic
   - `/wp-cron.php` (or control execution)
 - Implement request filtering at web server layer (nginx rules)
 - Restrict administrative endpoints access
+
 ---
 
 ## 8. Conclusion
@@ -154,5 +155,7 @@ The incident was caused by a **burst of automated scanning and probing traffic**
 
 This resulted in CPU saturation on the App Service Plan, exhausting application resources and leading to temporary performance degradation and downtime.
 
-The issue was mitigated by restarting the application, which restored normal service operation.
+The issue was mitigated by **scaling up the App Service Plan and restarting the Web App**, which restored normal service operation.
 ```
+
+---
