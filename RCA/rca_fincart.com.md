@@ -141,30 +141,11 @@ Automated scanning & probing traffic
 
 ## 7. Preventative Actions
 
-### High Priority
-
 - Block unnecessary endpoints:
   - `/xmlrpc.php`
   - `/wp-cron.php` (or control execution)
 - Implement request filtering at web server layer (nginx rules)
 - Restrict administrative endpoints access
-
----
-
-### Medium Priority
-
-- Enable Azure WAF (Front Door / Application Gateway)
-- Implement rate limiting for high-frequency requests
-- Configure auto-scaling based on CPU thresholds
-
----
-
-### Low Priority
-
-- Perform security audit of WordPress installation
-- Remove publicly exposed unnecessary files
-- Monitor unusual traffic patterns
-
 ---
 
 ## 8. Conclusion
