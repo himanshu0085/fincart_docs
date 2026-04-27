@@ -94,3 +94,84 @@ This included repeated requests to both valid and invalid paths, along with POST
 ---
 
 ### Cascade Effect
+
+```
+
+Automated scanning & probing traffic
+→ High volume of HTTP requests
+→ Repeated POST requests to resource-intensive endpoints
+→ CPU utilization spikes (~97%)
+→ PHP-FPM worker pool fully consumed
+→ Legitimate requests queued
+→ Increased response time and failures
+→ Website becomes slow / unavailable
+
+```
+
+---
+
+## 5. Impact and Mitigation
+
+### Customer Impact
+
+- Website degraded / intermittently unavailable for ~25 minutes
+- Users experienced slow responses and request timeouts
+
+---
+
+### Mitigation Steps
+
+| Step | Action |
+|------|--------|
+| 1 | Identified CPU spike via Azure Metrics |
+| 2 | Analyzed traffic patterns using Azure Observability |
+| 3 | Restarted Web App via Azure Portal |
+| 4 | Application recovered and CPU normalized |
+
+---
+
+## 6. What Was NOT the Root Cause
+
+- Not a memory issue (memory stable)
+- Not a database failure
+- Not an Azure platform outage
+- Infrastructure remained operational
+
+---
+
+## 7. Preventative Actions
+
+### High Priority
+
+- Block unnecessary endpoints:
+  - `/xmlrpc.php`
+  - `/wp-cron.php` (or control execution)
+- Implement request filtering at web server layer (nginx rules)
+- Restrict administrative endpoints access
+
+---
+
+### Medium Priority
+
+- Enable Azure WAF (Front Door / Application Gateway)
+- Implement rate limiting for high-frequency requests
+- Configure auto-scaling based on CPU thresholds
+
+---
+
+### Low Priority
+
+- Perform security audit of WordPress installation
+- Remove publicly exposed unnecessary files
+- Monitor unusual traffic patterns
+
+---
+
+## 8. Conclusion
+
+The incident was caused by a **burst of automated scanning and probing traffic**, which generated a high volume of requests to multiple endpoints, including resource-intensive WordPress paths.
+
+This resulted in CPU saturation on the App Service Plan, exhausting application resources and leading to temporary performance degradation and downtime.
+
+The issue was mitigated by restarting the application, which restored normal service operation.
+```
