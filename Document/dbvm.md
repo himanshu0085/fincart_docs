@@ -1,5 +1,3 @@
----
-
 # Secure VM Solution Proposal for Stage & Production Database Access
 
 **Version:** 1.0
