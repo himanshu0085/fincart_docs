@@ -48,31 +48,8 @@ Provide secure, auditable, and time-bound database access while complying with s
 
 ## Process Flow
 
-```text
-User Raises Access Request
-          │
-          ▼
-Approval by DB/Application Owner
-          │
-          ▼
-Generate Temporary Access Token
-          │
-          ▼
-User Accesses Database
-          │
-          ▼
-Database Audit Logs + Session Monitoring
-          │
-          ▼
-Token Automatically Expires
-          │
-          ▼
-Need More Access?
-          │
-         Yes
-          ▼
-Raise New Request → Approval → New Token
-```
+<img width="1024" height="1536" alt="DBACCESSAPPROCH" src="https://github.com/user-attachments/assets/475abc0b-21eb-4980-a9cb-718eb947aedc" />
+
 
 ## Benefits
 
