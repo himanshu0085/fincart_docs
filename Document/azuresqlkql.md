@@ -146,3 +146,16 @@ AzureDiagnostics
           application_name_s
 | order by TimeGenerated desc
 ```
+
+## One thing to verify
+
+Before using the filtering queries, run this once:
+
+```kusto
+AzureDiagnostics
+| where Category == "SQLSecurityAuditEvents"
+| where action_id_s in ("BCM","RCM")
+| where isnotempty(statement_s)
+| project TimeGenerated, statement_s
+| take 20
+```
