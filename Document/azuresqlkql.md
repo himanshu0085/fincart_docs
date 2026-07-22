@@ -1,5 +1,3 @@
----
-
 ## 1. Show all executed SQL statements
 
 ```kusto
